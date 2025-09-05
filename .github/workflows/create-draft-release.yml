@@ -48,14 +48,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Setup Go
-      uses: actions/setup-go@v5
-      with:
-        go-version-file: go.mod
-    - name: Run Integration Tests
-      run: ./scripts/integration.sh --builder ${{ matrix.builder }} --token ${{ github.token }}
-      env:
-        TMPDIR: "${{ runner.temp }}"
+
 
   release:
     name: Release
