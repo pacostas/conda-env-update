@@ -129,7 +129,7 @@ jobs:
           --image-ref "${DOCKERHUB_REGISTRY}/${IMAGE}:${{ steps.event.outputs.tag_full }}"
 
         ## Validate that the image index digest pushed to registry matches with the one on the release notes
-        pushed_image_index_digest=$(crane digest "index.docker.io/${DOCKERHUB_REGISTRY}/${IMAGE}:${{ steps.event.outputs.tag_full }}" | xargs)
+        pushed_image_index_digest=$(crane digest "docker://${DOCKERHUB_REGISTRY}/${IMAGE}:${{ steps.event.outputs.tag_full }}" | xargs)
 
         echo "Index digest from release notes: $(cat ./index-digest.sha256)"
         echo "Index digest pushed to registry: $pushed_image_index_digest"
